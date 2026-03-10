@@ -1,0 +1,72 @@
+version: '3.9'
+
+services:
+  postgres-auth:
+    image: postgres:16
+    container_name: social-postgres-auth
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_auth_data:/var/lib/postgresql/data
+
+  postgres-profile:
+    image: postgres:16
+    container_name: social-postgres-profile
+    environment:
+      POSTGRES_DB: profile_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_profile_data:/var/lib/postgresql/data
+
+  postgres-post:
+    image: postgres:16
+    container_name: social-postgres-post
+    environment:
+      POSTGRES_DB: post_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_post_data:/var/lib/postgresql/data
+
+  postgres-interaction:
+    image: postgres:16
+    container_name: social-postgres-interaction
+    environment:
+      POSTGRES_DB: interaction_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_interaction_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: social-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  redis:
+    image: redis:7
+    container_name: social-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_auth_data:
+  postgres_profile_data:
+  postgres_post_data:
+  postgres_interaction_data:

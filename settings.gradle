@@ -1,0 +1,6 @@
+rootProject.name = 'social-media-platform'
+
+include 'auth-service'
+include 'profile-service'
+include 'post-service'
+include 'interaction-service'
