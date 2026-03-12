@@ -6,7 +6,7 @@ spring:
     name: profile-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5434/profile_db
+    url: jdbc:postgresql://localhost:5432/social_profile_db
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
@@ -23,4 +23,5 @@ springdoc:
   api-docs:
     enabled: true
   swagger-ui:
+    enabled: true
     path: /swagger-ui.html
